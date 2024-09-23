@@ -1,4 +1,4 @@
-import { useEffect, useEffectx, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   urlClient,
   LENS_HUB_CONTRACT_ADDRESS,
@@ -11,8 +11,8 @@ import { Box, Button, Image } from "@chakra-ui/react/dist";
 
 function App() {
   const [account, setAccount] = useState(null);
-  const [profilex, setProfiles] = useState([]);
-  const [post, setPosts] = useState([]);
+  const [profiles, setProfiles] = useState([]);
+  const [posts, setPosts] = useState([]);
 
   /* Sign in - function */
   async function signIn() {
@@ -31,7 +31,7 @@ function App() {
   }
 
   /* Post */
-  async function getPost() {
+  async function getPosts() {
     const response = await urlClient
       .query(queryExplorePublications)
       .toPromise();
@@ -62,7 +62,25 @@ function App() {
     getPosts();
   }, []);
 
-  return <div className="app"></div>;
+  return (
+    <div className="app">
+      <Box width="100%" backgroundColor="rgba(5, 32, 64, 28)">
+        <Box
+          display="flex"
+          justifyContent="space-between"
+          alignItems="center"
+          width="55%"
+          margin="auto"
+          color="white"
+          padding="10px 0"
+        >
+          <Box>
+            <Box>SPHERE</Box>
+          </Box>
+        </Box>
+      </Box>
+    </div>
+  );
 }
 
 export default App;
